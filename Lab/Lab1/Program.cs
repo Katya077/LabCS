@@ -1,14 +1,11 @@
-﻿﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using System.IO;
+﻿using System.Text;
 
 struct GeneticData
 {
     public string protein;
     public string organism;
     public string amino_acids;
+    
 }
 
 class Program
@@ -21,9 +18,9 @@ class Program
 
     static void Main(string[] args)
     {
-  
         ReadGeneticData("sequences.0.txt");
         var commands = File.ReadAllLines("commands.0.txt");
+        
 
         outputLines.Add("Katya");
         outputLines.Add("Генетический поиск");
@@ -146,11 +143,21 @@ class Program
 
     static void DiffCommand(string p1, string p2)
     {
-        var g1 = data.FirstOrDefault(x => x.protein.Equals(p1, StringComparison.OrdinalIgnoreCase));
+         var g1 = data.FirstOrDefault(x => x.protein.Equals(p1, StringComparison.OrdinalIgnoreCase));
 
-        //var g1 = data.FirstOrDefault(FindProtein);
-        //private static bool FindProtein(){
-       //return x.protein.Equals(p1, StringComparison.OrdinalIgnorecase)}
+        // var g1 = FindProtein( p1);
+        // private static GeneticData FindProtein(string p1 )
+        // {
+        //     GeneticData g = new GeneticData();
+        //     foreach (var x in data)
+        //     {
+        //         if (x.protein.Equals(p1, StringComparison.CurrentCultureIgnoreCase))
+        //             g = x;
+        //         break;
+        //     }
+        //     return g;
+        // }
+        
        
         var g2 = data.FirstOrDefault(x => x.protein.Equals(p2, StringComparison.OrdinalIgnoreCase));
 
@@ -311,5 +318,6 @@ class Program
             Console.WriteLine("Аминокислота встречается: " + aa + " " + count);
         }
     }
-  
+
+
 }
