@@ -25,14 +25,14 @@ public class Game
         mouse = new Player("Mouse");
         state = GameState.Start;
         
-        history = new List<(int catLoc, int mouseLoc, int distatce)>();
-
+        history = new List<(int catLoc, int mouseLoc, int distance)>();
     }
 
     private int GetDistance()
     {
         if (cat.State == State.NotInGame || mouse.State == State.NotInGame)
             return -1;
+        
         int d = Math.Abs(cat.Position - mouse.Position);
         return Math.Min(d, size - d);
     }
@@ -47,7 +47,59 @@ public class Game
         return cat.Position == mouse.Position;
     }
     
+    public void Run()
+    {
+        Console.WriteLine("Cat and Mouse\n");
+        Console.WriteLine("Введите команду (M x / C x)");
+        Console.WriteLine("При завершении нажмите Q");
+        Console.WriteLine("Начальная позиция кота: ");
+        cat.SetPosition(int.Parse(Console.ReadLine()));
+        
+        Console.WriteLine("Начальная позиция мыши: ");
+        mouse.SetPosition(int.Parse(Console.ReadLine()));
+        SaveHistory();
+
+        while (state != GameState.End)
+        {
+            Console.WriteLine("Команда: ");
+            string input = Console.ReadLine()?.Trim().ToUpper();
+
+            if (string.IsNullOrWhiteSpace(input)) continue;
+
+            if (input == "Q")
+            {
+                state = GameState.End;
+                break;
+            }
+
+            string[] parts = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            if (parts.Length < 2) continue;
+            char command = parts[0][0];
+            int steps = int.Parse(parts[1]);
+
+            switch (command)
+            {
+                case 'M':
+                    mouse.Move(steps, size);
+                    break;
+                case 'C':
+                    cat.Move(steps, size);
+                    break;
+            }
+
+            SaveHistory();
+
+            if (IsCaught())
+            {
+                state = GameState.End;
+                break;
+            }
+
+
+        }
+    }
+    
 
 
 
-}
