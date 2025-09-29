@@ -1,10 +1,20 @@
 ﻿using System;
 
-class Program;
+namespace Lab2
 {
-    static void Main(string[] args)
+    class Program
     {
-        Console.WriteLine("Введите размер поля: ");
-        int size = int.Parse(Console.ReadLine());
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Введите размер поля: ");
+            int size;
+            while (!int.TryParse(Console.ReadLine(), out size) || size <= 0)
+            {
+                Console.WriteLine("Пожалуйста, введите положительное целое число для размера поля.");
+            }
+            Game game = new Game(size);
+            game.Run();
+        }
     }
+    
 }

@@ -16,7 +16,7 @@ public class Game
     private int size;
     private GameState state;
 
-    private List<(int catLoc, int mouseLoc, int distatce)> history;
+    private List<(int catPos, int mousePos, int distance)> history;
 
     public Game(int size)
     {
@@ -25,7 +25,7 @@ public class Game
         mouse = new Player("Mouse");
         state = GameState.Start;
         
-        history = new List<(int catLoc, int mouseLoc, int distance)>();
+        history = new List<(int catPos, int mousePos, int dictance)>();
     }
 
     private int GetDistance()
@@ -45,6 +45,18 @@ public class Game
     private bool IsCaught()
     {
         return cat.Position == mouse.Position;
+    }
+    private void PrintSummary()
+    {
+        Console.WriteLine($"\nDistance travelled: Mouse {mouse.DistanceTraveled}  Cat {cat.DistanceTraveled}");
+        if (IsCaught())
+        {
+            Console.WriteLine($"Mouse caught at: {cat.Position}");
+        }
+        else
+        {
+            Console.WriteLine("Mouse evaded Cat");
+        }   
     }
     
     public void Run()
@@ -74,9 +86,13 @@ public class Game
 
             string[] parts = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            if (parts.Length < 2) continue;
+            if (parts.Length < 2 || !int.TryParse(parts[1], out int steps))
+            {
+                Console.WriteLine("Пожалуйста, введите корректную команду и число шагов.");
+                continue;
+            }
+
             char command = parts[0][0];
-            int steps = int.Parse(parts[1]);
 
             switch (command)
             {
@@ -95,11 +111,9 @@ public class Game
                 state = GameState.End;
                 break;
             }
-
-
         }
     }
-    
+}
 
 
 
