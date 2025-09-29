@@ -1,4 +1,14 @@
-﻿namespace Lab2;
+﻿using System;
+
+namespace Lab2;
+
+public enum State
+{
+    Winner;
+    Looser;
+    Playing;
+    NotInGame;
+}
 
 public class Player
 {
@@ -14,5 +24,7 @@ public Player(string name)
     Position = 0;
     DistanceTraveled = 0;
 }
+
+
 
 }
