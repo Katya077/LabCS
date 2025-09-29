@@ -13,14 +13,13 @@ public enum State
 public class Player
 {
     public string Name { get; set; }
-    public int Position { get; set; }
-    public string State { get; set; }
-    public int DistanceTraveled { get; set; }
+    public int Position { get; private set; }
+    public string State { get; set; } = State.NotInGame;
+    public int DistanceTraveled { get; private set; }
 
     public Player(string name)
     {
         Name = name;
-        State = "NotInGame";
         Position = -1;
  
     }
