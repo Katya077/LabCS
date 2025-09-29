@@ -25,6 +25,12 @@ public Player(string name)
     DistanceTraveled = 0;
 }
 
+public void SetPosition(int pos)
+{
+    Position = pos;
+    State = State.Playing;
+}
+
 
 
 }
