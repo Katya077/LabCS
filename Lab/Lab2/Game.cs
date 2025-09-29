@@ -24,6 +24,7 @@ public class Game
         cat = new Player("Cat");
         mouse = new Player("Mouse");
         state = GameState.Start;
+        
         history = new List<(int catLoc, int mouseLoc, int distatce)>();
 
     }
@@ -35,6 +36,17 @@ public class Game
         int d = Math.Abs(cat.Position - mouse.Position);
         return Math.Min(d, size - d);
     }
+    private void SaveHistory()
+    {
+        int dist =GetDistance();
+        history.Add((cat.Position, mouse.Position, dist));
+    }
+
+    private bool IsCaught()
+    {
+        return cat.Position == mouse.Position;
+    }
+    
 
 
 
