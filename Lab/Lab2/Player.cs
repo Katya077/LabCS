@@ -14,7 +14,7 @@ public class Player
 {
     public string Name { get; set; }
     public int Position { get; private set; }
-    public string State { get; set; } = State.NotInGame;
+    public State State { get; set; } = State.NotInGame;
     public int DistanceTraveled { get; private set; }
 
     public Player(string name)
