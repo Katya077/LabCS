@@ -20,7 +20,9 @@ public class Player
     public Player(string name)
     {
         Name = name;
+        State = "NotInGame";
         Position = -1;
+ 
     }
 
     public void SetPosition(int pos)
@@ -28,11 +30,11 @@ public class Player
         Position = pos;
         State = State.Playing;
     }
+
     public void Move(int steps, int size)
     {
         if (State == State.NotInGame) return;
         Position = (Position + steps) % size;
-        
         if (Position < 0) Position += size;
         DistanceTraveled += Math.Abs(steps);
     }
