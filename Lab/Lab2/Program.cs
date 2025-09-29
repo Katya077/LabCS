@@ -1,3 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using System;
 
-Console.WriteLine("Hello, World!");
+class Program;
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Введите размер поля: ");
+        int size = int.Parse(Console.ReadLine());
+    }
+}
