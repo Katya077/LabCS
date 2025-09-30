@@ -48,14 +48,14 @@ public class Game
     }
     private void PrintSummary()
     {
-        Console.WriteLine($"\nDistance travelled: Mouse {mouse.DistanceTraveled}  Cat {cat.DistanceTraveled}");
+        Console.WriteLine($"\nПройденная дистанция: Мышка {mouse.DistanceTraveled}  Кот {cat.DistanceTraveled}");
         if (IsCaught())
         {
-            Console.WriteLine($"Mouse caught at: {cat.Position}");
+            Console.WriteLine($"Мышка поймана на: {cat.Position}");
         }
         else
         {
-            Console.WriteLine("Mouse evaded Cat");
+            Console.WriteLine("Мышка не поймана котом");
         }   
     }
     
