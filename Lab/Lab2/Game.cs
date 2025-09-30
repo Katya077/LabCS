@@ -58,7 +58,13 @@ public class Game
             Console.WriteLine("Мышка не поймана котом");
         }   
     }
-    
+
+    private void PrintPositions()
+    {
+        Console.WriteLine($"Текущая позиция кота: {cat.Position}");
+        Console.WriteLine($"Текущая позиция мыши: {mouse.Position}");
+    }
+
     public void Run()
     {
         Console.WriteLine("Cat and Mouse\n");
@@ -103,6 +109,7 @@ public class Game
                     cat.Move(steps, size);
                     break;
             }
+            PrintPositions();
 
             SaveHistory();
 
