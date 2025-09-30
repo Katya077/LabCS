@@ -6,6 +6,7 @@ namespace Lab2
     {
         static void Main(string[] args)
         {
+            Console.Clear();
             Console.WriteLine("Введите размер поля: ");
             int size;
             while (!int.TryParse(Console.ReadLine(), out size) || size <= 0)
@@ -16,5 +17,4 @@ namespace Lab2
             game.Run();
         }
     }
-    
 }

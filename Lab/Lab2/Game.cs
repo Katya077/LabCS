@@ -112,6 +112,7 @@ public class Game
                 break;
             }
         }
+        PrintSummary();
     }
 }
 
