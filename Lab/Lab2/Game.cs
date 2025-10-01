@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Lab2;
+﻿namespace Lab2;
 
 public enum GameState
 {
     Start,
-    End
+    End,
+    Stop
 }
 
 public class Game
@@ -27,18 +25,29 @@ public class Game
         
         history = new List<(int catPos, int mousePos, int dictance)>();
     }
-
+// наследование в классах(абстракты классов)
     private int GetDistance()
     {
-        if (cat.State == State.NotInGame || mouse.State == State.NotInGame)
-            return -1;
+        //Game Game1 =  new Game(size);
         
-        int d = Math.Abs(cat.Position - mouse.Position);
-        return Math.Min(d, size - d);
+        if (state != GameState.Stop)
+        {
+            ;
+
+
+            if (cat.State == State.NotInGame || mouse.State == State.NotInGame)
+                return -1;
+
+
+            int d = Math.Abs(cat.Position - mouse.Position);
+            return Math.Min(d, size - d);
+        }
+
+        return -1;
     }
     private void SaveHistory()
     {
-        int dist =GetDistance();
+        int dist = GetDistance();
         history.Add((cat.Position, mouse.Position, dist));
     }
 
@@ -59,15 +68,16 @@ public class Game
         }   
     }
 
-    private void PrintPositions()
+    private bool PrintPositions(int s)
     {
         Console.WriteLine($"Текущая позиция кота: {cat.Position}");
         Console.WriteLine($"Текущая позиция мыши: {mouse.Position}");
+        return s>0?true:false;
     }
 
     public void Run()
     {
-        Console.WriteLine("Cat and Mouse\n");
+        Console.WriteLine("Кот и мышка\n");
         Console.WriteLine("Введите команду (M x / C x)");
         Console.WriteLine("При завершении нажмите Q");
         Console.WriteLine("Начальная позиция кота: ");
@@ -108,18 +118,30 @@ public class Game
                 case 'C':
                     cat.Move(steps, size);
                     break;
+                case 'S':
+                    Console.WriteLine("Игра на паузе");
+                    break;
             }
-            PrintPositions();
 
-            SaveHistory();
-
-            if (IsCaught())
+            if (!PrintPositions(GetDistance()))
             {
-                state = GameState.End;
-                break;
+
+
+
+                PrintPositions(GetDistance());
+
+                SaveHistory();
+
+                if (IsCaught())
+                {
+                    state = GameState.End;
+                    break;
+                }
             }
+
+            PrintSummary();
         }
-        PrintSummary();
+        Console.WriteLine("Игра на паузе");
     }
 }
 

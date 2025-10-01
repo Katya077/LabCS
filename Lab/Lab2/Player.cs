@@ -1,11 +1,8 @@
-﻿using System;
-
+﻿
 namespace Lab2;
 
 public enum State
 {
-    Winner,
-    Looser,
     Playing,
     NotInGame,
 }
