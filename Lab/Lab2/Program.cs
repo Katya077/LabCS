@@ -5,15 +5,31 @@ namespace Lab2
     {
         static void Main(string[] args)
         {
-            Console.Clear();
-            Console.WriteLine("Введите размер поля: ");
-            int size;
-            while (!int.TryParse(Console.ReadLine(), out size) || size <= 0)
-            {
-                Console.WriteLine("Пожалуйста, введите положительное целое число для размера поля.");
-            }
-            Game game = new Game(size);
-            game.Run();
+            
+           string inputFile = "1.ChaseData.txt";
+           string outputFile = "PursuitLog.txt";
+
+           if (!File.Exists(inputFile))
+           {
+               Console.WriteLine("Входной файл не найден");
+               return;
+           }
+           
+           string[] lines = File.ReadAllLines(inputFile);
+           if (lines.Length == 0)
+           {
+               Console.WriteLine("Входной файл пуст.");
+               return; 
+           }
+           int size;
+           if (!int.TryParse(lines[0], out size) || size <= 0)
+           {
+               Console.WriteLine("Некорректный размер игрового поля в файле.");
+               return; 
+           }
+           Game game = new Game(inputFile, outputFile);
+           game.Run();
+           Console.WriteLine("Результат игры записан в " + outputFile);
         }
     }
 }

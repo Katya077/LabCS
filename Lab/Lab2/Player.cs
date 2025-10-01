@@ -1,37 +1,43 @@
 ﻿
-namespace Lab2;
-
-public enum State
+namespace Lab2
 {
-    Playing,
-    NotInGame,
-}
 
-public class Player
-{
-    public string Name { get; set; }
-    public int Position { get; private set; }
-    public State State { get; set; } = State.NotInGame;
-    public int DistanceTraveled { get; private set; }
-
-    public Player(string name)
+    public enum State
     {
-        Name = name;
-        Position = -1;
- 
+        Playing,
+        NotInGame,
+        Winner,
+        Looser
     }
 
-    public void SetPosition(int pos)
+    public class Player
     {
-        Position = pos;
-        State = State.Playing;
-    }
+        public string Name { get; }
+        public int Position { get; private set; }
+        public State CurrentState { get; set; } = State.NotInGame;
+        public int DistanceTraveled { get; private set; }
 
-    public void Move(int steps, int size)
-    {
-        if (State == State.NotInGame) return;
-        Position = (Position + steps) % size;
-        if (Position < 0) Position += size;
-        DistanceTraveled += Math.Abs(steps);
+        public Player(string name)
+        {
+            Name = name;
+            Position = -1;
+
+        }
+
+        public void SetPosition(int pos)
+        {
+            Position = pos;
+            CurrentState = State.Playing;
+        }
+
+        public void Move(int steps, int size)
+        {
+            if (CurrentState == State.NotInGame) return;
+
+            Position = (Position + steps) % size;
+            if (Position < 0) Position += size;
+
+            DistanceTraveled += Math.Abs(steps);
+        }
     }
 }
