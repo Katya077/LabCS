@@ -32,13 +32,9 @@ public class Game
         
         if (state != GameState.Stop)
         {
-            ;
-
-
             if (cat.State == State.NotInGame || mouse.State == State.NotInGame)
                 return -1;
-
-
+            
             int d = Math.Abs(cat.Position - mouse.Position);
             return Math.Min(d, size - d);
         }
@@ -72,7 +68,7 @@ public class Game
     {
         Console.WriteLine($"Текущая позиция кота: {cat.Position}");
         Console.WriteLine($"Текущая позиция мыши: {mouse.Position}");
-        return s>0?true:false;
+        return s>0 ? true:false;
     }
 
     public void Run()
@@ -99,6 +95,21 @@ public class Game
                 state = GameState.End;
                 break;
             }
+            if (input == "S")
+            {
+                state = GameState.Stop;
+                Console.WriteLine("Игра на паузе. Нажмите 'R' для продолжения.");
+                while (state == GameState.Stop)
+                {
+                    string resumeInput = Console.ReadLine()?.Trim().ToUpper();
+                    if (resumeInput == "R")
+                    {
+                        state = GameState.Start;
+                        Console.WriteLine("Игра продолжается.");
+                    }
+                }
+                continue; 
+            }
 
             string[] parts = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -118,16 +129,11 @@ public class Game
                 case 'C':
                     cat.Move(steps, size);
                     break;
-                case 'S':
-                    Console.WriteLine("Игра на паузе");
-                    break;
             }
 
             if (!PrintPositions(GetDistance()))
             {
-
-
-
+                
                 PrintPositions(GetDistance());
 
                 SaveHistory();
@@ -141,7 +147,7 @@ public class Game
 
             PrintSummary();
         }
-        Console.WriteLine("Игра на паузе");
+        Console.WriteLine("Игра завершена");
     }
 }
 
