@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab2\\Lab2.csproj",
-      "projectName": "Lab2",
-      "projectPath": "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab2\\Lab2.csproj",
+      "projectUniqueName": "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab3\\Lab3.csproj",
+      "projectName": "Lab3",
+      "projectPath": "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab3\\Lab3.csproj",
       "packagesPath": "C:\\Users\\slesa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab2\\obj\\",
+      "outputPath": "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab3\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\slesa\\AppData\\Roaming\\NuGet\\NuGet.Config"

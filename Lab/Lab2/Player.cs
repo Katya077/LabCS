@@ -1,13 +1,11 @@
-﻿
-namespace Lab2
+﻿namespace Lab2
 {
-
     public enum State
     {
         Playing,
         NotInGame,
         Winner,
-        Looser
+        Loser
     }
 
     public class Player

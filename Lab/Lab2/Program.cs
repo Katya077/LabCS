@@ -1,5 +1,4 @@
-﻿
-namespace Lab2
+﻿namespace Lab2
 {
     class Program
     {

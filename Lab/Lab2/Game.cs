@@ -1,7 +1,5 @@
-﻿
-namespace Lab2
+﻿namespace Lab2
 {
-
     public enum GameState
     {
         Start,
@@ -30,8 +28,6 @@ namespace Lab2
 
             history = new List<(int catPos, int mousePos, int dictance)>();
         }
-
-// наследование в классах(абстракты классов)
         private int GetDistance()
         {
             if (cat.CurrentState == State.NotInGame || mouse.CurrentState == State.NotInGame)
@@ -57,6 +53,12 @@ namespace Lab2
             string[] commands = File.ReadAllLines(inputFile);
             if (commands.Length == 0) return;
             size = int.Parse(commands[0]);
+            if (size <= 0)
+            {
+                Console.WriteLine("Неправильный размер поля");
+                return;
+            }
+            
             for (int i = 1; i < commands.Length && state != GameState.End; i++)
             {
 
@@ -77,7 +79,7 @@ namespace Lab2
                     if (IsCaught())
                     {
                         state = GameState.End;
-                        mouse.CurrentState = State.Looser;
+                        mouse.CurrentState = State.Loser;
                         cat.CurrentState = State.Winner;
                     }
 
@@ -107,12 +109,17 @@ namespace Lab2
                         else
                             cat.Move(steps, size);
                         break;
+
+                    default:
+                    
+                        Console.WriteLine("Некорректная команда");
+                    break;
                 }
 
                 if (cat.CurrentState == State.Playing && mouse.CurrentState == State.Playing && cat.Position == mouse.Position)
                 {
                     state = GameState.End;
-                    mouse.CurrentState = State.Looser;
+                    mouse.CurrentState = State.Loser;
                     cat.CurrentState = State.Winner;
                     SaveHistory();
                 }
@@ -147,8 +154,9 @@ namespace Lab2
         {
             writer.WriteLine();
             writer.WriteLine();
-            Console.WriteLine("\nПройденная дистанция: Мышка   Кот ");
-            writer.WriteLine($"{mouse.DistanceTraveled,2}{cat.DistanceTraveled,2}");
+            writer.WriteLine("\nПройденная дистанция: \n Мышка   Кот ");
+            writer.WriteLine($"{mouse.DistanceTraveled,2} " +"\t"+
+                             $"{cat.DistanceTraveled,2}");
             writer.WriteLine();
 
             if (cat.CurrentState == State.Winner)

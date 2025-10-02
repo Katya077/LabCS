@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab1\\Lab1.csproj": {}
+    "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab3\\Lab3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab1\\Lab1.csproj": {
+    "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab3\\Lab3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab1\\Lab1.csproj",
-        "projectName": "Lab1",
-        "projectPath": "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab1\\Lab1.csproj",
+        "projectUniqueName": "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab3\\Lab3.csproj",
+        "projectName": "Lab3",
+        "projectPath": "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab3\\Lab3.csproj",
         "packagesPath": "C:\\Users\\slesa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab1\\obj\\",
+        "outputPath": "C:\\Users\\slesa\\RiderProjects\\Lab\\Lab3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\slesa\\AppData\\Roaming\\NuGet\\NuGet.Config"
