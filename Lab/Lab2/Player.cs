@@ -32,11 +32,12 @@ namespace Lab2
 
         public void Move(int steps, int size)
         {
-            if (CurrentState == State.NotInGame) return;
+            if (CurrentState != State.Playing) return;
+            int oldPosition = Position;
 
             Position = (Position + steps) % size;
             if (Position < 0) Position += size;
-
+            if(Position == 0) Position = size;
             DistanceTraveled += Math.Abs(steps);
         }
     }

@@ -49,7 +49,7 @@ namespace Lab2
 
         private bool IsCaught()
         {
-            return cat.CurrentState == State.Playing || mouse.CurrentState == State.Playing && cat.Position == mouse.Position;
+            return cat.CurrentState == State.Playing && mouse.CurrentState == State.Playing && cat.Position == mouse.Position;
         }
 
         public void Run()
@@ -62,7 +62,8 @@ namespace Lab2
 
                 string input = commands[i].Trim().ToUpper();
 
-                if (string.IsNullOrWhiteSpace(input)) continue;
+                if (string.IsNullOrWhiteSpace(input))
+                    continue;
 
                 if (input == "Q")
                 {
@@ -73,7 +74,13 @@ namespace Lab2
                 if (input == "P")
                 {
                     SaveHistory();
-                    if (IsCaught()) state = GameState.End;
+                    if (IsCaught())
+                    {
+                        state = GameState.End;
+                        mouse.CurrentState = State.Looser;
+                        cat.CurrentState = State.Winner;
+                    }
+
                     continue;
                 }
 
@@ -102,11 +109,12 @@ namespace Lab2
                         break;
                 }
 
-                if (IsCaught())
+                if (cat.CurrentState == State.Playing && mouse.CurrentState == State.Playing && cat.Position == mouse.Position)
                 {
                     state = GameState.End;
                     mouse.CurrentState = State.Looser;
                     cat.CurrentState = State.Winner;
+                    SaveHistory();
                 }
             }
 
@@ -120,6 +128,7 @@ namespace Lab2
         private void PrintTable(StreamWriter writer)
         {
             writer.WriteLine("Кот и мышка");
+            writer.WriteLine();
             writer.WriteLine("\nКот Мышка Расстояние");
             writer.WriteLine("----------------------");
 
@@ -128,7 +137,7 @@ namespace Lab2
                 string catPos = entry.catPos == -1 ? "??" : entry.catPos.ToString();
                 string mousePos = entry.mousePos == -1 ? "??" : entry.mousePos.ToString();
                 string dist = (entry.catPos == -1 || entry.mousePos == -1) ? "" : entry.distance.ToString();
-                writer.WriteLine($"{catPos,3}\t{mousePos,6}\t{dist,9}");
+                writer.WriteLine($"{catPos,3}\t{mousePos,5}\t{dist,8}");
             }
 
             writer.WriteLine("------------------");
@@ -137,8 +146,9 @@ namespace Lab2
         private void PrintSummary(StreamWriter writer)
         {
             writer.WriteLine();
+            writer.WriteLine();
             Console.WriteLine("\nПройденная дистанция: Мышка   Кот ");
-            writer.WriteLine($"{mouse.DistanceTraveled,24}{cat.DistanceTraveled,7}");
+            writer.WriteLine($"{mouse.DistanceTraveled,2}{cat.DistanceTraveled,2}");
             writer.WriteLine();
 
             if (cat.CurrentState == State.Winner)
