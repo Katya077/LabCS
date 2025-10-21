@@ -1,16 +1,11 @@
 ﻿namespace Lab3;
 
-public class Punctuation
+public class Punctuation : Token
 {
-    public string Value { get; private set; }
+    public override string Value { get; }
 
     public Punctuation(string value)
     {
         Value = value;
-    }
-
-    public override string ToString()
-    {
-        return Value;
     }
 }

@@ -1,16 +1,11 @@
 ﻿namespace Lab3;
 
-public class Word
-{
-    public string Value { get; private set; }
-
-    public Word(string value)
+    public class Word : Token
     {
-        Value = value;
-    }
+        public override string Value { get; }
 
-    public override string ToString()
-    {
-        return Value;
+        public Word(string value)
+        {
+            Value = value;
+        }
     }
-}
