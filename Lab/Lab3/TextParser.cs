@@ -72,18 +72,17 @@ public class TextParser
                     currentWord = "";
                 }
                 
-                if (char.IsPunctuation(c) || char.IsWhiteSpace(c))
+                if (char.IsPunctuation(c))
                 {
-                    sentence.AddPunctuation(new Punctuation(c.ToString()));
+                    sentence.AddToken(new Punctuation(c.ToString()));
                 }
             }
         }
 
         if (!string.IsNullOrEmpty(currentWord))
         {
-            sentence.AddWord(new Word(currentWord));
+            sentence.AddToken(new Word(currentWord));
         }
-
         return sentence;
     }
 }

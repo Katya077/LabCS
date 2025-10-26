@@ -1,12 +1,16 @@
-﻿namespace Lab3;
+﻿using System.Xml.Serialization;
+namespace Lab3;
 
+[XmlInclude(typeof(Word))]
+[XmlInclude(typeof(Punctuation))]
 public abstract class Token
 {
-    public abstract string Value { get; }
+    [XmlText]
+    public abstract string Value { get; set; }
 
     public override string ToString()
     {
         return Value;
     }
 
-}
+} 
