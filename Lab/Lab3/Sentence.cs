@@ -3,12 +3,9 @@ namespace Lab3;
 
 public class Sentence
 {
-    private List<Token> _tokens;
+    private List<Token> _tokens = new List<Token>();
 
-    public Sentence()
-    {
-        _tokens = new List<Token>();
-    }
+    public Sentence() { }
     public void AddToken(Token token)
     {
         _tokens.Add(token);
@@ -18,20 +15,32 @@ public class Sentence
     {
         _tokens.Add(word);
     }
-    public void AddPunctuation(Punctuation punctuation)
-    {
-        _tokens.Add(punctuation);
-    }
 
     [XmlIgnore] 
     public List<Token> Tokens => _tokens;
     
-    [XmlElement("Word", typeof(Word))]
-    [XmlElement("Punctuation", typeof(Punctuation))]
-    public List<Token> TokensForXml
+    [XmlElement("Word")]
+    public List<Word> WordsForXml
     {
-        get => _tokens;
-        set => _tokens = value;
+        get
+        {
+            var words = new List<Word>();
+            foreach (var token in _tokens)
+            {
+                if (token is Word word)
+                    words.Add(word);
+            }
+            return words;
+        }
+        set
+        {
+            _tokens.Clear();
+            if (value != null)
+            {
+                foreach (var word in value)
+                    _tokens.Add(word);
+            }
+        }
     }
     public List<Word> GetWords()
     {

@@ -2,7 +2,7 @@
 namespace Lab3;
 
 [XmlInclude(typeof(Word))]
-[XmlInclude(typeof(Punctuation))]
+
 public abstract class Token
 {
     [XmlText]
@@ -13,4 +13,4 @@ public abstract class Token
         return Value;
     }
 
-} 
+}

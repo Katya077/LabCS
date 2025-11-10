@@ -1,4 +1,4 @@
-﻿namespace Lab3;
+﻿ namespace Lab3;
 
 class Program 
 {
@@ -19,15 +19,34 @@ class Program
 	        return;
         }
         
-        Console.WriteLine($"Файл {filePath} успешно прочитан");
-        
 		 TextParser parser = new TextParser();
 		 Text text = parser.Parse(inputText);
 		 
-	
+		List<string> Words = new List<string>();
+		foreach (var sentence in text.Sentences)
+		{
+		 foreach (var word in sentence.GetWords())
+			 {
+				 Words.Add(word.Value);
+			 }
+		 }
+		Console.WriteLine("\nВсе слова из текста: ");
+		foreach(string word in Words)
+		{
+		 Console.WriteLine(word);
+		}
+		
+		Console.WriteLine("\n1.Сортировка предложений по количеству слов:");
+		var sorted = text.GetSentencesSortedByWordCount();
+
+		Console.WriteLine("\n2.Сортировка предложений по длине:");
+		var sortedByLength = text.GetSentencesSortedByLength();
+
+		
+
+
 		 text.ExportToXml("text_output.xml");
 		 Console.WriteLine("Создан XML файл: text_output.xml");
-        
-		 Console.WriteLine("\nПрограмма завершена!");
+		
 	}
 }
