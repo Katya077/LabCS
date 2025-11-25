@@ -1,4 +1,5 @@
-﻿ namespace Lab3;
+﻿
+ namespace Lab3;
 
 class Program 
 {
@@ -52,8 +53,34 @@ class Program
 		 text.ExportToXml("text_output.xml");
 		 Console.WriteLine("7.Создан XML файл: text_output.xml");
 		 
-		 Console.WriteLine("\n8. Слова и их частота использования:");
-		 text.BuildWordIndex();
+		 Console.WriteLine("\n8. Слова и их частота использования:"); 
+		 
+		 SortedDictionary<string, (int Count, SortedSet<int> Lines)> gg =new SortedDictionary<string, (int Count, SortedSet<int> Lines)>();
+		 gg = text.BuildWordIndex();
 		
+		 foreach (var pair in gg)
+		 {
+			 Console.Write($"{pair.Key} — {pair.Value.Count}, предложения: ");
+			 foreach (var ln in pair.Value.Lines)
+				 Console.Write(ln + " ");
+			 Console.WriteLine();
+		 }
+		 SortedDictionary<int, char> Test =  new SortedDictionary<int, char>();
+		 int a1 = 0;
+		 char a2 = (char)((int)'a'-1);
+		 for (int i = 0; i < 100; i++)
+		 {
+			 a1 = a1 + 1;
+			 a2 = (char)((int)'a'+1);
+			 Test.Add(a1,a2);
+		 }
+
+		 foreach (var data in Test)
+		 {
+			 Console.WriteLine($"{Test.Keys}" +  " "  + Test.Values);
+		 }
+		 
+		 
+
 	}
 }

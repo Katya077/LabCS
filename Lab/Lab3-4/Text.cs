@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.CodeDom.Compiler;
+using System.Xml.Serialization;
 namespace Lab3
 {
     [XmlRoot("Text")]
@@ -136,7 +137,7 @@ namespace Lab3
             Console.WriteLine($"\nУдалено {removedCount} стоп-слов из текста.");
         }
         
-        public void BuildWordIndex()
+        public SortedDictionary<string, (int Count, SortedSet<int>)> BuildWordIndex(string outputFilePath = "word_index.txt")
         {
             SortedDictionary<string, (int Count, SortedSet<int> Lines)> index =
                 new SortedDictionary<string, (int, SortedSet<int>)>(StringComparer.OrdinalIgnoreCase);
@@ -153,21 +154,29 @@ namespace Lab3
                         index[w] = (0, new SortedSet<int>());
 
                     var entry = index[w];
-                    entry.Count++;                   
-                    entry.Lines.Add(line + 1);       
+                    entry.Count++;
+                    entry.Lines.Add(line + 1);
                     index[w] = entry;
                 }
             }
-
-            Console.WriteLine("\nСловарь:");
-            foreach (var pair in index)
+            
+            if (!string.IsNullOrEmpty(outputFilePath))
             {
-                Console.Write($"{pair.Key}... {pair.Value.Count}: ");
+                var lines = new List<string>();
+                lines.Add("Слова, частота и номера предложений:\n");
 
-                foreach (var ln in pair.Value.Lines)
-                    Console.Write(ln + " ");
-                Console.WriteLine();
+                foreach (var pair in index)
+                {
+                    string lineInfo = $"{pair.Key} — {pair.Value.Count} раз(а), предложения: {string.Join(" ", pair.Value.Lines)}";
+                    lines.Add(lineInfo);
+                }
+
+                File.WriteAllLines(outputFilePath, lines, System.Text.Encoding.UTF8);
+                Console.WriteLine($"\nСловарь сохранён в файл: {outputFilePath}");
             }
+            return index;
         }
+        
+
     }
 }
