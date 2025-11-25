@@ -1,0 +1,15 @@
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\bin\Debug\net8.0\Lab3-4.exe
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\bin\Debug\net8.0\Lab3-4.deps.json
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\bin\Debug\net8.0\Lab3-4.runtimeconfig.json
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\bin\Debug\net8.0\Lab3-4.dll
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\bin\Debug\net8.0\Lab3-4.pdb
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\obj\Debug\net8.0\Lab3-4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\obj\Debug\net8.0\Lab3-4.AssemblyInfoInputs.cache
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\obj\Debug\net8.0\Lab3-4.AssemblyInfo.cs
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\obj\Debug\net8.0\Lab3-4.csproj.CoreCompileInputs.cache
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\obj\Debug\net8.0\Lab3-4.sourcelink.json
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\obj\Debug\net8.0\Lab3-4.dll
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\obj\Debug\net8.0\refint\Lab3-4.dll
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\obj\Debug\net8.0\Lab3-4.pdb
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\obj\Debug\net8.0\Lab3-4.genruntimeconfig.cache
+C:\Users\slesa\RiderProjects\Lab\Lab3-4\obj\Debug\net8.0\ref\Lab3-4.dll
