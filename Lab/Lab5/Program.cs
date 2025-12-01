@@ -1,3 +1,10 @@
-﻿
+﻿namespace Lab5;
 
-Console.WriteLine("Hello, World!");
+public class Program
+{
+    static void Main()
+    {
+        Salad salad = new Salad();
+        
+    }
+}
