@@ -1,0 +1,5 @@
+Tomato 250
+Cucumber 300
+Carrot 80
+Cabbage 200
+OliveOil 15
