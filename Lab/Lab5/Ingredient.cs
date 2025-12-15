@@ -3,8 +3,8 @@
 public abstract class Ingredient
 {
     public string Name {get;}
-    public double Weight {get;}
-    public double Calories {get;}
+    public double Weight {get; set; }
+    public double Calories {get; set; }
 
     protected Ingredient(string name, double weight, double calories)
     {
